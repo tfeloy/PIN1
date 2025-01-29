@@ -16,7 +16,6 @@ pipeline {
         sh 'docker ps'
       }
     }
-  }
 
    stage('Login to Docker Registry') {
       steps {
