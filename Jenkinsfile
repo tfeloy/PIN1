@@ -26,7 +26,6 @@ pipeline {
    stage('Deploy Image') {
       steps{
         sh '''
-        docker login
         docker tag testapp tfeloy/pip2:testapp
         docker push tfeloy/pip2:testapp
         '''
