@@ -8,7 +8,6 @@ pipeline {
   environment {
     ARTIFACT_ID = "elbuo8/webapp:${env.BUILD_NUMBER}"
   }
-   stages {
 
   stages {
     stage('Check Docker Access') {
