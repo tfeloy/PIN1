@@ -5,6 +5,10 @@ pipeline {
     timeout(time: 2, unit: 'MINUTES')
   }
 
+  withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
+    sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+  }
+
   environment {
     ARTIFACT_ID = "elbuo8/webapp:${env.BUILD_NUMBER}"
   }
@@ -26,8 +30,8 @@ pipeline {
    stage('Deploy Image') {
       steps{
         sh '''
-        docker tag testapp 127.0.0.1:5000/mguazzardo/testapp
-        docker push 127.0.0.1:5000/mguazzardo/testapp
+        docker tag testapp tfeloy/pip2/testapp
+        docker push tfeloy/pip2/testapp
         '''
         }
       }
