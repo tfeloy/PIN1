@@ -27,7 +27,6 @@ pipeline {
       steps{
         sh '''
         docker tag testapp tfeloy/pip2:testapp
-        echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
         docker push tfeloy/pip2:testapp
         '''
         }
