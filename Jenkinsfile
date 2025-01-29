@@ -10,10 +10,14 @@ pipeline {
   }
    stages {
 
-  steps {
-      sh 'docker info'
-      sh 'docker ps'
+  stages {
+    stage('Check Docker Access') {
+      steps {
+        sh 'docker info'
+        sh 'docker ps'
+      }
     }
+  }
 
    stage('Login to Docker Registry') {
       steps {
