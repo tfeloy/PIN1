@@ -10,6 +10,11 @@ pipeline {
   }
    stages {
 
+  steps {
+      sh 'docker info'
+      sh 'docker ps'
+    }
+
    stage('Login to Docker Registry') {
       steps {
         withCredentials([usernamePassword(credentialsId: 'docker-hub', usernameVariable: 'DOCKER_USERNAME', passwordVariable: 'DOCKER_PASSWORD')]) {
