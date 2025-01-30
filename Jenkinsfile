@@ -16,8 +16,8 @@ pipeline {
              '''  
         }
     }
-  
-  
+
+
     stage('Run tests') {
       steps {
         sh "docker run testapp npm test"
@@ -26,15 +26,10 @@ pipeline {
    stage('Deploy Image') {
       steps{
         sh '''
-        docker tag testapp 127.0.0.1:5000/mguazzardo/testapp
-        docker push 127.0.0.1:5000/mguazzardo/testapp   
+        docker tag testapp tfeloy/pip2:testapp
+        docker push tfeloy/pip2:testapp
         '''
         }
       }
     }
 }
-
-
-    
-  
-
